@@ -1,0 +1,36 @@
+<div class="employeeDetails" *ngIf="employees && employees.length">
+	<h2>{{title}}</h2>
+	<div class="filter">
+		<div class="control-group">
+			<label class="control-label" for="filter">Filter by:</label>
+			<div class="controls">
+				<input id="filter" type="text" placeholder="Type surname here" [(ngModel)] = 'listFilter'>
+			</div>
+		</div>
+		<div class="filtered">
+			<span>Filtered by: <span class="filter">{{listFilter}}</span></span>
+		</div>		
+	</div>
+	<div class="table">
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Surname</th>
+					<th>Role</th>
+					<th>Department</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor = "let employee of employees | productFilter:listFilter">
+					<td>{{employee.id}}</td>
+					<td>{{employee.name}}</td>
+					<td>{{employee.surname}}</td>
+					<td>{{employee.role}}</td>
+					<td>{{employee.department}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
